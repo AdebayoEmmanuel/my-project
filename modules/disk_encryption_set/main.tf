@@ -1,13 +1,13 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault_key" "disk_encryption_keyvault_key" {
-  name         = "GVMVPDIL5KV"
+  name         = "GVMVPDIL5KVk"
   key_vault_id = var.key_vault_id
   key_type     = "RSA"
   key_size     = 2048
 
   depends_on = [
-    azurerm_key_vault_access_policy.example-user
+    azurerm_key_vault_access_policy.user-access
   ]
 
   key_opts = [

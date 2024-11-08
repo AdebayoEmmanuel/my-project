@@ -48,3 +48,15 @@ module "nist_compliant_keyvault" {
   log_analytics_workspace_id = module.resources.log_analytics_workspace.id
   subnet_id                  = module.resources.subnet.id
 }
+
+module "disk_encryption_set" {
+  source = "../modules/disk_encryption_set"
+
+  disk_encryption_set_name   = module.name-map.disk_encryption_set_name
+  key_vault_name             = module.name-map.key_vault_name
+  resource_group_name        = var.resource_group_name
+  location                   = var.location
+  tenant_id                  = var.tenant_id #FIX me??
+  key_vault                  = module.nist_compliant_keyvault.key_vault_id
+  key_vault_key_id           = module.disk_encryption_set.key_vault_key_id
+}
