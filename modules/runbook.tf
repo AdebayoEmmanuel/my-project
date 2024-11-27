@@ -9,6 +9,6 @@ resource "azurerm_automation_runbook" "update_hosts_file" {
   runbook_type            = "PowerShell"
 
   publish_content_link {
-    uri = "required"
+    uri = "https://raw.githubusercontent.com/AdebayoEmmanuel/my-project/refs/heads/main/placeholder.ps1"
   }
 }
